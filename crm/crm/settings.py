@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 
+# Keep secret key private for github by importing from secret file
+from .secret_settings import *
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -20,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '6@pe28oo7*(r&et6w^2y=dk3i-et&5rb$p6%g=8r7y2facbg=s'
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
