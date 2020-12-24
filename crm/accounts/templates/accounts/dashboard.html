@@ -2,6 +2,8 @@
 
 {% block content %}
 
+{% include 'accounts/status.html' %}
+
 <br>
 
 <div class="row">
@@ -19,6 +21,25 @@
                 </tr>
             </table>
         </div>
+    </div>
+
+    <div class="col-md-7">
+        <h5>LAST 5 ORDERS</h5>
+        <hr>
+        <div class="card card-body">
+            <a class="btn btn-primary btn-sm btn-block" href="">Creater Orders
+            </a>
+            <table class="table table-sm">
+                <tr>
+                    <th>Product</th>
+                    <th>Date Ordered</th>
+                    <th>Status</th>
+                    <th>Update</th>
+                    <th>Remove</th>
+                </tr>
+            </table>
+        </div>
+        
     </div>
 
     
