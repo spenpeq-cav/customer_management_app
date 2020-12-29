@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import os
-
+from .secret_settings import * # Import secret key and email password
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -23,7 +23,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # Keep secret key private for github by importing from secret file
-from .secret_settings import *
+
+# Secret key in secret_settings
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -131,12 +132,16 @@ STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
 
-
-
 #MEDIA_ROOT = [
     #BASE_DIR / "static/images/"
 #]
 
 
-
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images/')
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'test.spenpeq@gmail.com'
+# EMAIL_HOST_PASSWORD in secret_settings
