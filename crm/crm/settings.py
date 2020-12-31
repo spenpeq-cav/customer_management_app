@@ -27,9 +27,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Secret key in secret_settings
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['spencer-crm.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
@@ -86,7 +86,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'demo_1',
         'USER': 'spencerpeq',
-        'PASSWORD': '*********',
+        'PASSWORD': 'AWS_M_0918',
         'HOST': 'database-1.c0iwgpmnlfcu.us-east-2.rds.amazonaws.com',
         'PORT': '5432',
     }
