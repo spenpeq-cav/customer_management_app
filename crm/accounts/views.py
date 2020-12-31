@@ -133,13 +133,13 @@ def createOrder(request, pk):
     #form = OrderForm(initial={'customer': customer})
     if request.method == 'POST':
         # print('Printing post:', request.POST)
-        #form = OrderForm(request.POST)
+        form = OrderForm(request.POST)
         formset = OrderFormSet(request.POST, instance=customer)
         if formset.is_valid():
             formset.save()
             return redirect('/')
 
-    context = {'formset': formset}
+    context = {'form': formset}
     return render(request, 'accounts/order_form.html', context)
 
 @login_required(login_url='login')

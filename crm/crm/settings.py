@@ -44,6 +44,7 @@ INSTALLED_APPS = [
 
     'accounts.apps.AccountsConfig',
     'django_filters',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -85,11 +86,13 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'demo_1',
         'USER': 'spencerpeq',
-        'PASSWORD': 'AWS_M_0918',
+        'PASSWORD': '*********',
         'HOST': 'database-1.c0iwgpmnlfcu.us-east-2.rds.amazonaws.com',
         'PORT': '5432',
     }
 }
+
+
 
 
 # Password validation
@@ -149,3 +152,21 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'test.spenpeq@gmail.com'
 # EMAIL_HOST_PASSWORD in secret_settings
+
+
+# S3 bucket config
+
+# In Secret settings
+# AWS_ACCESS_KEY_ID
+# AWS_SECRET_ACCESS_KEY 
+# AWS_STORAGE_BUCKET_NAME
+
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+AWS_S3_HOST = "s3.us-east-2.amazonaws.com" 
+AWS_S3_ENDPOINT_URL: 'https://sts.us-east-2.amazonaws.com'
+AWS_S3_REGION_NAME = "us-east-2"
+ADMIN_MEDIA_PREFIX = '/static/admin/'
