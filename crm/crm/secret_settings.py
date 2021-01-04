@@ -1,8 +1,0 @@
-SECRET_KEY = '6@pe28oo7*(r&et6w^2y=dk3i-et&5rb$p6%g=8r7y2facbg=s'
-
-EMAIL_HOST_PASSWORD = 'django_test_pass'
-
-
-AWS_ACCESS_KEY_ID = 'AKIAXTPDUE3KMKMIKJMT'
-AWS_SECRET_ACCESS_KEY = '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'
-AWS_STORAGE_BUCKET_NAME = 'spencer-crm'
