@@ -146,6 +146,7 @@ USE_TZ = True
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_TMP = BASE_DIR/ 'static'
 
 STATIC_URL = '/static/'
 
