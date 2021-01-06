@@ -29,3 +29,7 @@ ul{
     color: black;
     font-size: 35px;
 }
+
+.nav-link{
+    background-color: white;
+}
