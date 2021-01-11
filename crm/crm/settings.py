@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import os
-from .secret_settings import * # Import secret key and email password
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,10 +24,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 # Keep secret key private for github by importing from secret file
 
-# Secret key in secret_settings
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['spencer-crm.herokuapp.com', '127.0.0.1']
 
@@ -84,23 +84,23 @@ WSGI_APPLICATION = 'crm.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'demo_1',
-#         'USER': 'spencerpeq',
-#         'PASSWORD': 'AWS_M_0918',
-#         'HOST': 'database-1.c0iwgpmnlfcu.us-east-2.rds.amazonaws.com',
-#         'PORT': '5432',
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': config('POSTGRES_AWS_NAME'),
+        'USER': config('POSTGRES_AWS_USER'),
+        'PASSWORD': config('POSTGRES_AWS_PASSWORD'),
+        'HOST': config('POSTGRES_AWS_HOST'),
+        'PORT': config('POSTGRES_AWS_PORT'),
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 
 
 
@@ -166,19 +166,18 @@ STATICFILES_DIRS = [
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images/')
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'test.spenpeq@gmail.com'
-# EMAIL_HOST_PASSWORD in secret_settings
+EMAIL_HOST = config('EMAIL_HOST')
+EMAIL_PORT = config('EMAIL_PORT', cast=int)
+EMAIL_USE_TLS = config('EMAIL_USE_TLS', cast=bool)
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 
 
 # S3 bucket config
 
-# In Secret settings
-# AWS_ACCESS_KEY_ID
-# AWS_SECRET_ACCESS_KEY 
-# AWS_STORAGE_BUCKET_NAME
+AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = config('AWS_STORAGE_BUCKET_NAME')
 
 AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL = None
